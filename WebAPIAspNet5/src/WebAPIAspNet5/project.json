@@ -17,11 +17,12 @@
     "Microsoft.AspNet.Http": "1.0.0-beta4",
     "Microsoft.AspNet.Mvc.Core": "6.0.0-beta4",
     "Microsoft.AspNet.Routing": "1.0.0-beta4",
-    "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4"
+    "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4",
+    "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-beta4"
   },
 
   "commands": {
-    "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000"/*,
+    "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000" /*,
     "kestrel": "Microsoft.AspNet.Hosting --server Kestrel --server.urls http://localhost:5004"*/
   },
 

@@ -10,8 +10,6 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.ConfigurationModel;
 using WebAPIAspNet5.Models;
 using WebAPIAspNet5.Services;
-using Microsoft.AspNet.Diagnostics;
-using Microsoft.AspNet.Diagnostics.Entity;
 
 namespace WebAPIAspNet5
 {
@@ -45,11 +43,8 @@ namespace WebAPIAspNet5
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseErrorPage(ErrorPageOptions.ShowAll);
-
-            app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
             // Configure the HTTP request pipeline.
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
 
             // Add MVC to the request pipeline.
             app.UseMvc();
