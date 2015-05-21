@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using WebAPIAspNet5.Models;
+﻿using System.Collections.Generic;
 using System.Linq;
+using WebAPIAspNet5.Models;
 
 namespace WebAPIAspNet5.Services
 {
@@ -11,10 +10,10 @@ namespace WebAPIAspNet5.Services
     /// </summary>
     public interface IConexaoService
     {
-        IEnumerable<Conexao> GetConexoes();
-        Conexao GetConexao(int id);
-        Conexao CreateConexao(Conexao Conexao);
-        Conexao UpdateConexao(int id, Conexao Conexao);
+        IEnumerable<GspConexaoGesplan> GetConexoes();
+        GspConexaoGesplan GetConexao(int id);
+        GspConexaoGesplan CreateConexao(GspConexaoGesplan Conexao);
+        GspConexaoGesplan UpdateConexao(int id, GspConexaoGesplan Conexao);
         bool DeleteConexao(int id);
     }
     /// <summary>
@@ -22,7 +21,6 @@ namespace WebAPIAspNet5.Services
     /// </summary>
     public class ConexaoService : IConexaoService
     {
-
         ConexaoDbContext ctx;
 
         public ConexaoService(ConexaoDbContext c)
@@ -30,7 +28,7 @@ namespace WebAPIAspNet5.Services
             ctx = c;
         }
 
-        public Conexao CreateConexao(Conexao Conexao)
+        public GspConexaoGesplan CreateConexao(GspConexaoGesplan Conexao)
         {
             ctx.Conexoes.Add(Conexao);
             ctx.SaveChanges();
@@ -39,7 +37,7 @@ namespace WebAPIAspNet5.Services
 
         public bool DeleteConexao(int id)
         {
-            var conexao = ctx.Conexoes.Where(p => p.id == id).First();
+            var conexao = ctx.Conexoes.Where(p => p.idConexaoGesplan == id).First();
             ctx.Conexoes.Remove(conexao);
             if (ctx.SaveChanges() > 0)
             {
@@ -48,20 +46,20 @@ namespace WebAPIAspNet5.Services
             return false;
         }
 
-        public Conexao GetConexao(int id)
+        public GspConexaoGesplan GetConexao(int id)
         {
-            var product = ctx.Conexoes.Where(p => p.id == id).First();
+            var product = ctx.Conexoes.Where(p => p.idConexaoGesplan == id).First();
             return product;
         }
 
-        public IEnumerable<Conexao> GetConexoes()
+        public IEnumerable<GspConexaoGesplan> GetConexoes()
         {
             return ctx.Conexoes.AsEnumerable();
         }
 
-        public Conexao UpdateConexao(int id, Conexao Conexao)
+        public GspConexaoGesplan UpdateConexao(int id, GspConexaoGesplan Conexao)
         {
-            var conex = ctx.Conexoes.Where(p => p.id == id).First();
+            var conex = ctx.Conexoes.Where(p => p.idConexaoGesplan == id).First();
 
             if (conex != null)
             {

@@ -1,39 +1,61 @@
 ﻿using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
-using Microsoft.Data.Entity.Metadata;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebAPIAspNet5.Models
 {
     /// <summary>
-    /// The Entity class with Product properties
+    /// The Entity class with Conexoes properties
     /// </summary>
-    [Table("ConexaoGesplan")]
-    public class Conexao
+    //[Table("ConexaoGesplan")]
+    public class GspConexaoGesplan
     {
         /*[Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]*/
-        public int id { get; set; }
+        [ScaffoldColumn(false)]
+        public int idConexaoGesplan{ get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string dsConexaoGesplan { get; set; }
+
+        [Required]
+        [StringLength(100)]
         public string dsServidor { get; set; }
+        
+        [StringLength(100)]
         public string dsDatabase { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string dsUsuario { get; set; }
+
+        [Required]
+        [StringLength(100)]
         public string dsSenha { get; set; }
+
+        [Required]
         public int stTipoBanco { get; set; }
     }
 
     /// <summary>
     /// The context class. This uses the Sql Server with the Connection string
-    /// defined in the Config.json
+    /// defined in the config.json
     /// </summary>
     public class ConexaoDbContext : DbContext
-    {
-        public DbSet<Conexao> Conexoes { get; set; }
+    {   
+        public DbSet<GspConexaoGesplan> Conexoes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
+        {   
             options.UseSqlServer(Startup.Configuration.Get("Data:DefaultConnection:ConnectionString"));
+        }
+
+        //Sets the entity primary key
+        protected override void OnModelCreating(ModelBuilder builder)
+        {   
+            builder.Entity<GspConexaoGesplan>().Key(p => p.idConexaoGesplan);
+
+            base.OnModelCreating(builder);
         }
     }
 }

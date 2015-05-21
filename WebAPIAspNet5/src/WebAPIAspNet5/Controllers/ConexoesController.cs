@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNet.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using WebAPIAspNet5.Services;
 using WebAPIAspNet5.Models;
+using WebAPIAspNet5.Services;
 
 namespace WebAPIAspNet5.Controllers
 {
@@ -20,28 +17,28 @@ namespace WebAPIAspNet5.Controllers
 
         // GET: api/conexoes
         [HttpGet]
-        public IEnumerable<Conexao> Get()
+        public IEnumerable<GspConexaoGesplan> Get()
         {
             return service.GetConexoes();
         }
 
         // GET api/conexoes/5
         [HttpGet("{id}")]
-        public Conexao Get(int id)
+        public GspConexaoGesplan Get(int id)
         {
             return service.GetConexao(id);
         }
 
         // POST api/conexoes
         [HttpPost]
-        public Conexao Post(Conexao conex)
+        public GspConexaoGesplan Post(GspConexaoGesplan conex)
         {
             return service.CreateConexao(conex);
         }
 
         // PUT api/conexoes/5
         [HttpPut("{id}")]
-        public Conexao Put(int id, Conexao conex)
+        public GspConexaoGesplan Put(int id, GspConexaoGesplan conex)
         {
             return service.UpdateConexao(id, conex);
         }
