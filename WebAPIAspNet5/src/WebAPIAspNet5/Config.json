@@ -1,7 +1,7 @@
 ﻿{
     "Data": {
         "DefaultConnection": {
-            "ConnectionString": "Server=TALES\\TALES;Database=dsv_conector;User Id=dsv_conector;Password=gesplan;"
+            "ConnectionString": "Server=TALES\\TALES;Database=dsv_conector;User Id=dsv_conector;Password=gesplan;Trusted_Connection=True;"
         }
     }
 }
